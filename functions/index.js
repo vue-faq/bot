@@ -5,7 +5,8 @@ const bodyParser = require('body-parser')
 const fb = require('firebase')
 require('firebase/firestore')
 
-const AUTH = functions.config().bot.auth
+const EMAIL = functions.config().bot.email
+const PASS = functions.config().bot.pass
 const TOKEN = functions.config().bot.token
 
 const config = {
@@ -18,7 +19,7 @@ const config = {
 }
 fb.initializeApp(config)
 
-fb.auth().signInWithCustomToken(AUTH)
+fb.auth().signInWithEmailAndPassword(EMAIL, PASS)
 const db = fb.firestore()
 
 
