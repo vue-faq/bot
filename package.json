@@ -2,7 +2,8 @@
   "name": "vuefaqbot",
   "description": "Bot for vue-faq.com",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "true"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
