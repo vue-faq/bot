@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- node
+deploy:
+  provider: heroku
+  app: vuefaqbot
+  on:
+    branch: master
+  api_key:
+    secure: NJodCND/nkcQCus5KgjMAT66ue8OkE+bSSBo8AMsWMvMd+sWRknAhUhNDb3DrNM5zKYgNab1do5KWZogz7rhPeBSbk6Rf5uy1YMrarDJUgtYrjFcBqDr2462hDAITq55Teocfq5UgA9RJUdelx/r+JXW1dPDblrq73KJGL7yxifE4GmPFtqe+buFx0AAN+FqyhYQ2R8FdCWqOZZdFv+SEkiFCg0I6vuQGwwDNTenKb5tF8MN4vN3STMsz5lDBdnys6rO74BEfmaNQFfKWt5chMrR8BKvyclJ72Af+nBHAyJHLUsagYj54QZI6nQ5yPlQ3b0kRdGWuIk3/dW2pZl6ZCQ/UtpHPhbKEQrNalQdXa4CsLvGyFw0LB8pNfgU3Efop+nY2DnnrvbPLdy3sBCg0efrs2s82tu68Bi9/3q4qibWUSQ/lKvgA0NgZYIZtst/TX1H6wDkhv9xcN96BuUW334xYMTXUin4HDXb1KCGzqt8buKksG6Vw77P8aZWcH+FLyf1iN9eY9TChV1O3eKxkrufy0O95f5SxIWBS3ibxBsZa2u9u0GLIVVoyu3RlCaO02+HSaQYzEYxxi3QrirA4aTMr++NXLYAgHcJQfqvWX55WiGM+uG4RJCeJ743Tm+eI/jSxDw0kqz8vf9+lK0CUM65HyF6a0wuJrXkCcdxKxQ=
+notifications:
+  email: false
+cache: yarn
