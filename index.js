@@ -30,8 +30,12 @@ bot.setWebHook('https://vuefaqbot.herokuapp.com/' + TOKEN)
 
 const div = '###'
 
-bot.onText(/\/addfaq(?:@vuefaqbot)? (.+)/, (msg, match) => {
+bot.onText(/\/addfaq(?:@vuefaqbot)?(.*)/, (msg, match) => {
     const resp = match[1]
+    if (!resp.trim()) {
+        bot.sendMessage(msg.chat.id, 'Что добавлять-то?')
+        return
+    }
     if (resp.indexOf(div) < 0) {
         bot.sendMessage(msg.chat.id, 'Три решётки обязательны!')
         return
