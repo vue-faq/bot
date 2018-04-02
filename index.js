@@ -1,13 +1,14 @@
-const functions = require('firebase-functions')
 const TelegramBot = require('node-telegram-bot-api')
 const express = require('express')
 const bodyParser = require('body-parser')
 const fb = require('firebase')
 require('firebase/firestore')
 
-const EMAIL = functions.config().bot.email
-const PASS = functions.config().bot.pass
-const TOKEN = functions.config().bot.token
+
+const PORT = process.env.PORT || 5000
+const EMAIL = process.env.EMAIL
+const PASS = process.env.PASS
+const TOKEN = process.env.TOKEN
 
 const config = {
     apiKey: "AIzaSyCOmVkbb3dMRN4kH-oJJfF0XoDXPkmTcxY",
@@ -25,23 +26,26 @@ const db = fb.firestore()
 
 const bot = new TelegramBot(TOKEN)
 
-//bot.setWebHook('https://us-central1-vue-faq-fb452.cloudfunctions.net/bot/' + TOKEN)
+bot.setWebHook('https://vuefaqbot.herokuapp.com/' + TOKEN)
 
 const div = '###'
 
-bot.onText(/\/faq (.+)/, (msg, match) => {
+bot.onText(/\/addfaq(?:@vuefaqbot)? (.+)/, (msg, match) => {
     const resp = match[1]
-    if (resp.indexOf(div) < 0)
+    if (resp.indexOf(div) < 0) {
+        bot.sendMessage(msg.chat.id, 'Три решётки обязательны!')
         return
+    }
     const [question, answer] = resp.split(div)
     db.collection("questions").add({question, answer})
+    bot.sendMessage(msg.chat.id, 'Добавлено!')
 })
 
 
-const app = express()
-app.use(bodyParser.json())
-app.post('/' + TOKEN, (req, res) => {
-    bot.processUpdate(req.body)
-    res.sendStatus(200)
-})
-exports.bot = functions.https.onRequest(app)
+express()
+    .use(bodyParser.json())
+    .post('/' + TOKEN, (req, res) => {
+        bot.processUpdate(req.body)
+        res.sendStatus(200)
+    })
+    .listen(PORT, () => console.log(`Listening on ${ PORT }`))

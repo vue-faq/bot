@@ -1,0 +1,16 @@
+{
+  "name": "vuefaqbot",
+  "description": "Bot for vue-faq.com",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "firebase": "^4.12.1",
+    "node-telegram-bot-api": "^0.30.0"
+  },
+  "devDependencies": {
+  },
+  "private": true
+}
