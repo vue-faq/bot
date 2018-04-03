@@ -47,7 +47,7 @@ bot.onText(/\/addfaq(?:@vuefaqbot)?(.*)/, (msg, match) => {
 })
 
 bot.onText(/\/about(?:@vuefaqbot)?/, (msg, match) => {
-    bot.sendMessage(msg.chat.id, 'FAQ бот чата @vuejs_ru. FAQ здесь: ' + site + '.'
+    bot.sendMessage(msg.chat.id, 'FAQ бот чата @vuejs_ru. FAQ здесь: ' + site + '.')
 })
 
 
