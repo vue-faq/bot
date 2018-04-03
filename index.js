@@ -29,6 +29,7 @@ const bot = new TelegramBot(TOKEN)
 bot.setWebHook('https://vuefaqbot.herokuapp.com/' + TOKEN)
 
 const div = '###'
+const site = 'http://vue-faq.com'
 
 bot.onText(/\/addfaq(?:@vuefaqbot)?(.*)/, (msg, match) => {
     const resp = match[1]
@@ -43,6 +44,10 @@ bot.onText(/\/addfaq(?:@vuefaqbot)?(.*)/, (msg, match) => {
     const [question, answer] = resp.split(div)
     db.collection("questions").add({question, answer})
     bot.sendMessage(msg.chat.id, 'Добавлено!')
+})
+
+bot.onText(/\/about(?:@vuefaqbot)?/, (msg, match) => {
+    bot.sendMessage(msg.chat.id, 'FAQ бот чата @vuejs_ru. FAQ здесь: ' + site + '.'
 })
 
 
