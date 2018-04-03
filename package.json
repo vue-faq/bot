@@ -3,7 +3,7 @@
   "description": "Bot for vue-faq.com",
   "scripts": {
     "start": "node index.js",
-    "test": "true"
+    "test": "node -c index.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
